@@ -26,6 +26,10 @@ export default function SocialProof() {
         <div className="mt-12 pt-8 border-t border-neutral-900 pb-24 md:pb-0">
           <p className="font-body text-neutral-700 text-xs text-center">
             © Alex &amp; Maty – Urban CDB Salon · Via Francesco Arnaldi 108/112, 80126 Napoli
+            {' · '}
+            <a href="/privacy" className="hover:text-neutral-400 transition-colors">
+              Privacy Policy
+            </a>
           </p>
         </div>
       </div>

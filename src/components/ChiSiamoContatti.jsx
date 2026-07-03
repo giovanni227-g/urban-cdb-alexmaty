@@ -1,8 +1,6 @@
 import { useState, useCallback, useRef } from 'react'
 import { useFadeUp } from '../hooks/useFadeUp'
-
-const MAPS_URL =
-  'https://maps.google.com/?q=Via+Francesco+Arnaldi+108,+80126+Napoli'
+import { WA_LINK_BARE, MAPS_URL } from '../data/business'
 
 const SALON_PHOTOS = [
   { src: '/salon-1.jpg', alt: 'Urban CDB Salon — interno 1' },
@@ -71,13 +69,22 @@ export default function ChiSiamoContatti() {
             <div className="w-16 h-px bg-brand-magenta mb-8" />
 
             <p className="font-body text-neutral-300 text-base leading-relaxed mb-5">
-              Alex &amp; Maty è un salone di parrucchiere a Napoli, aperto dal 2001.
-              In questi vent&apos;anni abbiamo costruito un posto dove stile metropolitano
-              e cura artigianale convivono senza compromessi.
+              Immergetevi nell&apos;atmosfera di Alex &amp; Maty, il salone nel cuore di Napoli.
+              Da 25 anni il nostro team di stilisti trasforma i vostri capelli in
+              un&apos;espressione autentica del vostro stile, con la stessa cura artigianale
+              del primo giorno.
+            </p>
+            <p className="font-body text-neutral-400 text-sm leading-relaxed mb-5">
+              Che siate alla ricerca di un colore nuovo, di un taglio su misura o di un
+              trattamento nutriente, ogni servizio è pensato per valorizzare la vostra
+              bellezza naturale. Oltre al taglio e al colore, il salone offre zona
+              estetica completa e solarium.
             </p>
             <p className="font-body text-neutral-400 text-sm leading-relaxed mb-8">
-              Oltre al taglio e al colore, offriamo una zona estetica completa e il
-              solarium — tutto in un unico spazio, nel cuore del quartiere Fuorigrotta.
+              Utilizziamo prodotti professionali Matrix e L&apos;Oréal per creare look che
+              durano nel tempo, senza mai compromettere la salute dei vostri capelli.
+              Scoprite l&apos;esperienza, la cura e l&apos;accoglienza che da 25 anni ci
+              contraddistinguono.
             </p>
 
             <div className="flex flex-wrap gap-2 mb-10">
@@ -101,7 +108,7 @@ export default function ChiSiamoContatti() {
               <div>
                 <p className="font-display text-white text-[10px] tracking-widest uppercase mb-2">WhatsApp</p>
                 <a
-                  href="https://wa.me/393382873428"
+                  href={WA_LINK_BARE}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-body text-neutral-300 hover:text-white text-sm transition-colors"

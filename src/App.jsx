@@ -5,8 +5,13 @@ import Pacchetti from './components/Pacchetti'
 import ChiSiamoContatti from './components/ChiSiamoContatti'
 import SocialProof from './components/SocialProof'
 import WhatsAppFAB from './components/WhatsAppFAB'
+import PrivacyPolicy from './components/PrivacyPolicy'
 
 function App() {
+  if (window.location.pathname === '/privacy') {
+    return <PrivacyPolicy />
+  }
+
   return (
     <div className="min-h-screen text-white font-body">
       <div className="fixed inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/hero-bg.jpg)', zIndex: 0 }} />

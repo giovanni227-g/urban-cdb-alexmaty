@@ -1,5 +1,4 @@
-const WA_LINK =
-  'https://wa.me/393382873428?text=Ciao!%20Vorrei%20prenotare%20un%20appuntamento%20da%20Alex%20%26%20Maty'
+import { WA_LINK } from '../data/business'
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7" aria-hidden="true">

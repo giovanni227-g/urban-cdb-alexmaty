@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
-
-const WA_LINK =
-  'https://wa.me/393382873428?text=Ciao!%20Vorrei%20prenotare%20un%20appuntamento%20da%20Alex%20%26%20Maty'
+import { WA_LINK } from '../data/business'
 
 export default function Hero() {
   const [visible, setVisible] = useState(false)

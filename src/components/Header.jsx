@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
-
-const WA_LINK =
-  'https://wa.me/393382873428?text=Ciao!%20Vorrei%20prenotare%20un%20appuntamento%20da%20Alex%20%26%20Maty'
+import { WA_LINK } from '../data/business'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -19,14 +17,18 @@ export default function Header() {
       }`}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-5 py-4">
-        <div className="flex flex-col leading-none">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="flex flex-col leading-none text-left"
+          aria-label="Torna alla home"
+        >
           <span className="font-display text-brand-magenta text-xs tracking-widest uppercase">
             Urban CDB Salon
           </span>
           <span className="font-display text-white text-xl md:text-2xl font-bold tracking-wide uppercase">
             Alex &amp; Maty
           </span>
-        </div>
+        </button>
 
         <a
           href={WA_LINK}

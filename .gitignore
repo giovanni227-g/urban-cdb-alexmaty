@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Working/source assets not meant to ship in public/
+assets-source/
+
+# Local Claude Code settings
+.claude/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -1,81 +1,68 @@
 # BRIEF — Landing page Alex & Maty (Urban CDB Salon)
+**Stato: sito completo, in fase di pre-pubblicazione.** Questo documento descrive cosa esiste *oggi* nel progetto (non più solo la richiesta iniziale). Per il punto preciso su cosa manca prima di andare online, vedi in fondo "Cosa manca prima del deploy".
 
 ## Contesto
-Landing **single-page** per un salone di parrucchiere/estetica reale a Napoli. Questa è una **bozza locale** (no deploy, gira solo con `npm run dev`). Stack già inizializzato: **Vite + React + Tailwind CSS v4**. Non reinstallare nulla, lavora sul progetto esistente.
+Landing **single-page** (+ una pagina statica `/privacy`) per un salone di parrucchiere/estetica reale a Napoli. Stack: **Vite + React 19 + Tailwind CSS v4**, gira con `npm run dev`, build di produzione con `npm run build` (output in `dist/`).
 
 ## Regola assoluta sui dati
-Questo è il sito di un cliente reale. **NON inventare recensioni** (nomi reali + testo finto è vietato). Per i prezzi usa placeholder evidenti `€XX` che si capisce vadano sostituiti. Tutto il resto sotto è dato reale, usalo verbatim.
+Sito di un cliente reale. Non inventare mai recensioni o dati di contatto: tutto ciò che è scritto sotto è dato reale fornito dal cliente o verificato con lui.
 
-## Brand & gerarchia logo (importante)
-Header e hero: **ricostruisci il lockup come wordmark tipografico su sfondo nero**. NON importare il PNG del disco bianco col bordo magenta come logo principale (su nero è goffo). Il PNG va usato solo come favicon.
+## Brand & logo
+Header e hero: wordmark tipografico su sfondo nero (niente PNG del disco come logo principale, solo come favicon).
+- **ALEX & MATY** → grande, Oswald Bold, bianco
+- **URBAN CDB SALON** → tag sopra, piccolo, magenta
 
-Gerarchia testo del logo:
-- **ALEX & MATY** → protagonista, grande, Oswald Bold, bianco
-- **URBAN CDB SALON** → tag piccolo sopra (o sotto) ALEX & MATY, come sovra-marchio/affiliazione, font ridotto, magenta o grigio
+## Palette
+- Magenta primario: `#E6007D` — Magenta scuro: `#9E0055` — Nero: `#000000`
+Definite in `@theme` dentro `src/index.css`, usate via utility Tailwind (`brand-magenta`, `brand-magenta-dark`, `brand-black`).
 
-## Palette (campionata dal logo, usa esatte)
-- Magenta primario: `#E6007D`
-- Magenta scuro: `#9E0055`
-- Nero base: `#000000`
-Sono già registrate in `@theme` dentro `src/index.css`. Usale tramite utility Tailwind, non CSS raw.
+## Font — self-hosted
+Oswald (600, 700) e Inter (400, 500, 600, 700), entrambi **variable font**: un solo file copre tutti i pesi.
+- `public/fonts/inter-var-latin.woff2`, `public/fonts/oswald-var-latin.woff2`
+- Dichiarati via `@font-face` in `src/index.css`. Nessuna dipendenza da fonts.googleapis.com/fonts.gstatic.com.
 
-## Font
-- Titoli: **Oswald Bold** — già caricato in index.html
-- Body: **Inter** — già caricato in index.html
-
-## Dati reali del salone
+## Dati reali del salone — fonte unica: `src/data/business.js`
+Tutti i link WhatsApp, il numero di telefono e l'indirizzo per la mappa **devono** leggere da qui, non essere ridigitati nei componenti.
 - Nome: Alex & Maty (Urban CDB Salon)
 - Indirizzo: Via Francesco Arnaldi 108/112, 80126 Napoli
-- Tel: 081 588 3171
-- WhatsApp: 338 287 3428
+- Tel: 081 588 3171 — WhatsApp: 338 287 3428
 - Orari: Martedì–Sabato 9:00–19:00 (Lunedì e Domenica chiuso)
 - Rating: 4,8★ — 31 recensioni Google
-- Attività dal 2001: parrucchiere + zona estetica + solarium
+- Attività dal 2001 (comunicata anche come "da 25 anni" nei testi Chi Siamo)
 - Claim: **"Stile metropolitano, cura artigianale."**
 
 ## CTA prenotazione
-Tutti i bottoni "Prenota" aprono un link WhatsApp precompilato:
-`https://wa.me/393382873428?text=Ciao!%20Vorrei%20prenotare%20un%20appuntamento%20da%20Alex%20%26%20Maty`
-Nessun sistema di booking custom.
+Bottoni "Prenota" → link WhatsApp precompilato, generato da `business.js` (`WA_LINK`). Il link "338 287 3428" cliccabile nei contatti usa invece `WA_LINK_BARE` (stesso numero, senza messaggio precompilato) — comportamento intenzionale, non un bug.
 
-## Struttura pagina (in quest'ordine)
-1. **Header sticky** — wordmark (vedi gerarchia logo) + bottone WhatsApp. Effetto blur/background allo scroll.
-2. **Hero** — claim grande, sotto-claim, CTA WhatsApp. Vedi sezione "Estetica & Hero" sotto.
-3. **Chi siamo** — salone dal 2001, taglio metropolitano e cura artigianale, parrucchiere + estetica + solarium.
-4. **Gallery lavori** — 6 placeholder grigi (`bg-neutral-800`) con label "FOTO" centrata. Le foto reali arrivano dopo. Tienili in griglia responsive.
-5. **Servizi** — leggi da `src/data/services.js`. Categorie REALI, prezzi placeholder `€XX`:
-   - Taglio & Piega
-   - Colore & Tecniche
-   - Trattamenti
-   - Estetica
-   - Solarium
-6. **Social proof** — badge "4,8★ · 31 recensioni Google" + 4 card recensione lette da `src/data/reviews.js`. I 4 testi sono placeholder `[RECENSIONE — DA INSERIRE]` con i nomi reali: Katty, Carolina Starace, Susi Di Muro, ketty ruocco. NON inventare il testo.
-7. **Contatti** — WhatsApp, telefono (cliccabile `tel:`), indirizzo, orari, e mappa (embed Google Maps iframe dell'indirizzo).
+## Struttura pagina reale (ordine in `src/App.jsx`)
+1. **Header** (`Header.jsx`) — sticky, wordmark cliccabile (torna in cima), bottone WhatsApp, sfondo che compare allo scroll.
+2. **Hero** (`Hero.jsx`) — claim animato in ingresso, CTA WhatsApp. Sfondo: `public/hero-bg.jpg` (foto reale del salone).
+3. **Ultimi lavori** (`UltimiLavori.jsx`, dati in `src/data/gallery.js`) — griglia stile feed Instagram, foto + video (autoplay in-view via IntersectionObserver), link a Instagram.
+4. **Prezzi** (`Pacchetti.jsx`, dati in `src/data/packages.js`) — due tab: "Pacchetti" e "Menù Bellezza". Prezzi reali, non più placeholder. **Nota**: esistono due pacchetti chiamati entrambi "Total Care" (prezzi/contenuti diversi) — confermato dal cliente che sono corretti così, non è un errore da correggere.
+5. **Chi siamo + Contatti** (`ChiSiamoContatti.jsx`) — testo Chi siamo, badge, telefono/WhatsApp/indirizzo/orari, carosello foto del salone (`public/salon-1..4.jpg`), link "Apri in Google Maps" (link esterno, **non** iframe embedded).
+6. **Social proof** (`SocialProof.jsx`, dati in `src/data/reviews.js`) — badge 4,8★, 4 recensioni Google **reali** (testo verbatim da Google, verificato col cliente il 2026-07-03), footer con link Privacy Policy.
+7. **WhatsApp FAB** (`WhatsAppFAB.jsx`) — pulsante fisso in basso a destra, sempre visibile.
+8. **Privacy Policy** (`PrivacyPolicy.jsx`) — pagina separata su `/privacy`, raggiungibile dal link in footer. **Manca ancora**: ragione sociale/P.IVA del titolare (placeholder `[DA COMPILARE]`) e validazione del testo da parte di un legale (segnalato con commento nel codice e nell'HTML).
 
-## Estetica & Hero (vincoli precisi — leggi attentamente)
-Riferimento: **editorial-fashion / minimal con accenti cyber-glam**. NON è una landing SaaS, NON è "minimal generico".
-- Base nera dominante, magenta usato come accento deciso ma non ovunque.
-- Tipografia grande, condensata (Oswald), molto contrasto di scala tra titoli e body.
+## Resilienza, sicurezza, analytics
+- `ErrorBoundary.jsx` avvolge `<App />` in `main.jsx`: se qualcosa va in errore, l'utente vede un fallback con CTA telefonica invece di una pagina bianca.
+- `vercel.json`: `outputDirectory: dist`, rewrite SPA per `/privacy`, header di sicurezza (CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy).
+- Analytics: Umami Cloud (cookieless, nessun banner necessario), script in `index.html` con ID reale già configurato.
+- `public/robots.txt` presente (minimale, nessun sitemap: dominio di produzione non ancora confermato).
 
-**Hero — cosa fare:**
-- Claim grande con reveal animato all'ingresso (fade + slide-up del testo, leggero).
-- Accento magenta tipografico o una linea/forma geometrica magenta, niente di più.
+## Pulizia repository
+Rimossi (2026-07-03) tutti i file "dead code" trovati nel progetto: 5 componenti orfani (Blocco 1), `src/data/services.js`, `src/hooks/useLenis.js`, `src/hooks/useFullPageScroll.js`, `src/lib/gsap.js`, `src/App.css`, `src/assets/react.svg`, `src/assets/vite.svg`, `src/assets/hero.png`, `public/icons.svg`, e le dipendenze npm `gsap`/`lenis` ormai senza alcun file che le usasse (`src/assets/` risultava vuota dopo la rimozione ed è stata eliminata). Verificato con build/lint/screenshot ad ogni passaggio che il sito resta identico — erano davvero inutilizzati, il peso del bundle finale non è mai cambiato.
 
-**Hero — cosa NON fare (vietato):**
-- NO gradient mesh animati
-- NO particelle / sfere fluttuanti
-- NO blob colorati animati
-- NO effetti "glow" generici da template SaaS
-L'animazione deve essere sobria ed editoriale, non un effetto-vetrina.
+## Cosa manca prima del deploy
+**Bloccanti:**
+- Ragione sociale/P.IVA del titolare in `PrivacyPolicy.jsx`
+- Validazione del testo privacy da parte di un legale
+- Commit + merge del branch `fix-lag-chrome-2026-07-03` su `main`
+- Dominio + collegamento hosting (Vercel, config già pronta in `vercel.json`)
 
-## Fix tecnico noto
-C'è un bug "testo bianco su sfondo bianco" nell'Header già scritto. Risolvilo impostando lo sfondo nero **via utility Tailwind** (`bg-black` sul wrapper / layout principale), NON con CSS raw sul body. Mantieni coerenza utility-first ovunque.
-
-## Architettura file
-- Componenti in `src/components/` (un file per sezione: Header.jsx, Hero.jsx, ChiSiamo.jsx, Gallery.jsx, Servizi.jsx, SocialProof.jsx, Contatti.jsx)
-- Dati in `src/data/services.js` e `src/data/reviews.js`
-- `App.jsx` assembla le sezioni in ordine
-- Header.jsx esiste già: correggilo e riusalo, non riscriverlo da zero se non serve
-
-## Output atteso
-Sito che gira con `npm run dev`, responsive (mobile-first), tutte le sezioni popolate con dati reali e placeholder evidenti dove indicato. Primo componente da consolidare: **Hero.jsx**.
+**Rimandato volutamente (fuori scope dell'ultimo giro di lavoro):**
+- SEO on-page: `<title>` ancora quello di default Vite, nessuna meta description/OG/JSON-LD
+- Ottimizzazione immagine hero (compressione/WebP/preload)
+- Favicon set completo (manifest, apple-touch-icon)
+- `sitemap.xml`
+- Pulizia dei file "dead code" elencati sopra
