@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-magenta: #E6007D;
+  --color-brand-magenta-dark: #9E0055;
+  --color-brand-black: #000000;
+  --font-display: "Oswald", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
