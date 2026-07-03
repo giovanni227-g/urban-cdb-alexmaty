@@ -78,7 +78,7 @@ export default function UltimiLavori() {
   useFadeUp(titleRef)
 
   return (
-    <section className="snap-start scroll-mt-16 border-t border-neutral-900 py-20 md:py-28">
+    <section className="border-t border-neutral-900 py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-5">
         <p className="font-display text-brand-magenta text-xs tracking-widest uppercase mb-3">
           Instagram
