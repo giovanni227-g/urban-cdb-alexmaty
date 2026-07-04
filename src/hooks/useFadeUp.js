@@ -21,5 +21,5 @@ export function useFadeUp(ref) {
     )
     io.observe(el)
     return () => io.disconnect()
-  }, [])
+  }, [ref])
 }

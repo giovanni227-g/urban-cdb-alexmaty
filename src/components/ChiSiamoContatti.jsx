@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef } from 'react'
 import { useFadeUp } from '../hooks/useFadeUp'
-import { WA_LINK_BARE, MAPS_URL } from '../data/business'
+import { BUSINESS, WA_LINK_BARE, MAPS_URL } from '../data/business'
+import Reveal from './Reveal'
 
 const SALON_PHOTOS = [
   { src: '/salon-1.jpg', alt: 'Urban CDB Salon — interno 1' },
@@ -51,8 +52,16 @@ export default function ChiSiamoContatti() {
   }, [nextPhoto])
 
   return (
-    <section className="border-t border-neutral-900 py-20 md:py-28">
-      <div className="max-w-6xl mx-auto px-5">
+    <section className="border-t border-neutral-900 py-20 md:py-28 relative overflow-hidden">
+      {/* Stage light: bloom shifts to the left for this scene.
+          Radial-gradient (not filter:blur) so it costs nothing to paint. */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(38% 42% at 12% 30%, rgba(230,0,125,0.09) 0%, transparent 68%)' }}
+        aria-hidden="true"
+      />
+
+      <div className="relative max-w-6xl mx-auto px-5">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
 
           {/* Colonna sinistra — Chi siamo + Contatti */}
@@ -69,43 +78,48 @@ export default function ChiSiamoContatti() {
             <div className="w-16 h-px bg-brand-magenta mb-8" />
 
             <p className="font-body text-neutral-300 text-base leading-relaxed mb-5">
-              Immergetevi nell&apos;atmosfera di Alex &amp; Maty, il salone nel cuore di Napoli.
-              Da 25 anni il nostro team di stilisti trasforma i vostri capelli in
-              un&apos;espressione autentica del vostro stile, con la stessa cura artigianale
-              del primo giorno.
-            </p>
-            <p className="font-body text-neutral-400 text-sm leading-relaxed mb-5">
-              Che siate alla ricerca di un colore nuovo, di un taglio su misura o di un
-              trattamento nutriente, ogni servizio è pensato per valorizzare la vostra
-              bellezza naturale. Oltre al taglio e al colore, il salone offre zona
-              estetica completa e solarium.
+              Alex &amp; Maty lavora a Napoli dal 2001: taglio, colore, trattamenti, estetica
+              e solarium in un salone costruito intorno a cura, ascolto e risultato finale.
             </p>
             <p className="font-body text-neutral-400 text-sm leading-relaxed mb-8">
-              Utilizziamo prodotti professionali Matrix e L&apos;Oréal per creare look che
-              durano nel tempo, senza mai compromettere la salute dei vostri capelli.
-              Scoprite l&apos;esperienza, la cura e l&apos;accoglienza che da 25 anni ci
-              contraddistinguono.
+              Il tratto è urbano, ma il metodo resta artigianale: diagnosi prima del servizio,
+              prodotti professionali Matrix e L&apos;Oréal, e una mano allenata su look da portare
+              davvero tutti i giorni.
             </p>
 
             <div className="flex flex-wrap gap-2 mb-10">
-              {badges.map((b) => (
-                <span
+              {badges.map((b, i) => (
+                <Reveal
                   key={b}
+                  as="span"
+                  delay={i * 90}
+                  y={12}
                   className="inline-block border border-brand-magenta/60 text-brand-magenta font-display uppercase tracking-widest text-xs px-4 py-2"
                 >
                   {b}
-                </span>
+                </Reveal>
               ))}
             </div>
 
+            <div className="relative overflow-hidden border border-white/[0.08] bg-white/[0.045] rounded p-5 mb-8">
+              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full border border-brand-magenta/25" aria-hidden="true" />
+              <p className="font-display text-white uppercase tracking-widest text-sm mb-2">
+                Prenoti, arrivi, ti siedi.
+              </p>
+              <p className="font-body text-neutral-400 text-sm leading-relaxed">
+                Il salone è in Via Francesco Arnaldi 108/112. Per appuntamenti rapidi usa WhatsApp,
+                per raggiungerci apri direttamente la mappa.
+              </p>
+            </div>
+
             <div className="grid grid-cols-2 gap-x-6 gap-y-6 border-t border-white/[0.06] pt-8">
-              <div>
+              <Reveal delay={0} y={14}>
                 <p className="font-display text-white text-[10px] tracking-widest uppercase mb-2">Telefono</p>
-                <a href="tel:0815883171" className="font-body text-neutral-300 hover:text-white text-sm transition-colors">
-                  081 588 3171
+                <a href={`tel:${BUSINESS.phone}`} className="font-body text-neutral-300 hover:text-white text-sm transition-colors">
+                  {BUSINESS.phoneDisplay}
                 </a>
-              </div>
-              <div>
+              </Reveal>
+              <Reveal delay={80} y={14}>
                 <p className="font-display text-white text-[10px] tracking-widest uppercase mb-2">WhatsApp</p>
                 <a
                   href={WA_LINK_BARE}
@@ -115,20 +129,20 @@ export default function ChiSiamoContatti() {
                 >
                   338 287 3428
                 </a>
-              </div>
-              <div>
+              </Reveal>
+              <Reveal delay={160} y={14}>
                 <p className="font-display text-white text-[10px] tracking-widest uppercase mb-2">Indirizzo</p>
                 <p className="font-body text-neutral-400 text-sm leading-relaxed">
                   Via F. Arnaldi 108/112<br />80126 Napoli
                 </p>
-              </div>
-              <div>
+              </Reveal>
+              <Reveal delay={240} y={14}>
                 <p className="font-display text-white text-[10px] tracking-widest uppercase mb-2">Orari</p>
                 <p className="font-body text-neutral-400 text-sm leading-relaxed">
                   Mar–Sab&nbsp;9:00–19:00<br />
                   <span className="text-neutral-600">Lun e Dom chiuso</span>
                 </p>
-              </div>
+              </Reveal>
             </div>
           </div>
 
@@ -154,7 +168,7 @@ export default function ChiSiamoContatti() {
                   alt={photo.alt}
                   loading={i === 0 ? 'eager' : 'lazy'}
                   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                    i === photoIdx ? 'opacity-100' : 'opacity-0'
+                    i === photoIdx ? 'opacity-100 ken-burns' : 'opacity-0'
                   }`}
                 />
               ))}

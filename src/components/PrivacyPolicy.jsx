@@ -1,11 +1,7 @@
 export default function PrivacyPolicy() {
   return (
+    // NOTA: far validare il testo da un legale prima della pubblicazione.
     <div className="min-h-screen bg-black text-white font-body px-5 py-16 md:py-24">
-      <div
-        dangerouslySetInnerHTML={{
-          __html: '<!-- DA FAR VALIDARE DA UN LEGALE PRIMA DELLA PUBBLICAZIONE -->',
-        }}
-      />
       <div className="max-w-2xl mx-auto">
         <a
           href="/"

@@ -1,25 +1,47 @@
+import { BUSINESS } from '../data/business'
 import { reviews } from '../data/reviews'
+import Reveal from './Reveal'
 
 export default function SocialProof() {
   return (
-    <section className="border-t border-neutral-900 py-12 md:py-16">
+    <section className="border-t border-neutral-900 py-16 md:py-20 relative overflow-hidden">
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(34% 34% at 78% 20%, rgba(230,0,125,0.08) 0%, transparent 70%)' }}
+        aria-hidden="true"
+      />
       <div className="max-w-6xl mx-auto px-5">
-        <div className="flex items-center gap-3 mb-10">
-          <span className="font-display font-bold text-white text-lg">4,8</span>
-          <span className="text-brand-magenta text-sm">★★★★★</span>
-          <span className="font-body text-neutral-600 text-xs">· 31 recensioni Google</span>
-        </div>
+        <Reveal className="relative flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10" y={12}>
+          <div>
+            <p className="font-display text-brand-magenta text-xs tracking-widest uppercase mb-3">
+              Recensioni Google
+            </p>
+            <h2 className="font-display font-bold uppercase text-4xl md:text-5xl text-white leading-none">
+              Si torna per la mano.
+            </h2>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="font-display font-bold text-white text-3xl leading-none">{BUSINESS.ratingDisplay}</span>
+            <span className="text-brand-magenta text-sm">★★★★★</span>
+            <span className="font-body text-neutral-500 text-xs">· {BUSINESS.reviewsCount} recensioni Google</span>
+          </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {reviews.map((r) => (
-            <div key={r.name}>
-              <p className="font-body text-neutral-500 italic text-xs leading-relaxed mb-3">
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+          {reviews.map((r, i) => (
+            <Reveal
+              key={r.name}
+              delay={i * 80}
+              y={18}
+              className="border border-white/[0.08] bg-white/[0.045] rounded p-5"
+            >
+              <p className="font-body text-neutral-300 italic text-sm leading-relaxed mb-5">
                 &ldquo;{r.text}&rdquo;
               </p>
               <p className="font-display text-brand-magenta text-[10px] uppercase tracking-widest">
                 — {r.name}
               </p>
-            </div>
+            </Reveal>
           ))}
         </div>
 

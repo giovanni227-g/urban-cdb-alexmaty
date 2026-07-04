@@ -1,10 +1,29 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>urban-cdb-alexmaty</title>
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Preload the hero image: it's the LCP element, fetched at high priority before it's discovered in CSS.
+         Fonts are intentionally NOT preloaded: they're small, same-origin, and already fetched early via the
+         render-blocking stylesheet, so a preload adds little and only produces "unused preload" console noise. -->
+    <link rel="preload" as="image" href="/hero-bg.jpg" fetchpriority="high" />
+
+    <title>Alex &amp; Maty · Urban CDB Salon — Parrucchiere a Napoli</title>
+    <meta name="description" content="Alex &amp; Maty — Urban CDB Salon. Parrucchiere, estetica e solarium nel cuore di Napoli dal 2001. Stile metropolitano, cura artigianale. Prenota su WhatsApp." />
+    <meta name="author" content="Alex & Maty — Urban CDB Salon" />
+
+    <!-- Open Graph (social sharing) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:site_name" content="Alex & Maty — Urban CDB Salon" />
+    <meta property="og:title" content="Alex &amp; Maty · Urban CDB Salon — Parrucchiere a Napoli" />
+    <meta property="og:description" content="Parrucchiere, estetica e solarium a Napoli dal 2001. Stile metropolitano, cura artigianale." />
+    <meta property="og:image" content="/hero-bg.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <script defer src="https://cloud.umami.is/script.js" data-website-id="c385cebd-1754-4be4-8fce-d4746d1685b2"></script>
   </head>
   <body>
