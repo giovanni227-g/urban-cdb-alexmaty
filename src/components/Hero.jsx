@@ -57,7 +57,7 @@ export default function Hero() {
         >
           {TRUST_MARKERS.map((marker) => (
             <span key={marker} className="inline-flex items-center gap-2 font-display uppercase tracking-[0.13em] md:tracking-[0.18em] text-[10px]">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-magenta shadow-[0_0_14px_rgba(230,0,125,0.8)]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-magenta" />
               {marker}
             </span>
           ))}
@@ -67,7 +67,7 @@ export default function Hero() {
           href={WA_LINK}
           target="_blank"
           rel="noopener noreferrer"
-          className={`mt-8 inline-flex items-center gap-2.5 bg-brand-magenta hover:bg-brand-magenta-dark text-white font-semibold font-body px-8 py-3.5 rounded shadow-lg shadow-brand-magenta/25 hover:shadow-brand-magenta/40 hover:-translate-y-0.5 transition-all duration-300 delay-700 ${base} ${visible ? shown : hidden}`}
+          className={`mt-8 inline-flex items-center gap-2.5 bg-brand-magenta hover:bg-brand-magenta-dark text-white font-semibold font-body px-8 py-3.5 rounded shadow-lg shadow-black/40 hover:-translate-y-0.5 transition-all duration-300 delay-700 ${base} ${visible ? shown : hidden}`}
         >
           <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5" aria-hidden="true">
             <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.01c-.24.68-1.42 1.31-1.95 1.35-.5.04-.98.22-3.3-.69-2.79-1.1-4.55-3.96-4.69-4.15-.14-.19-1.13-1.5-1.13-2.86 0-1.36.71-2.03.97-2.31.24-.26.53-.32.71-.32.18 0 .35 0 .51.01.16.01.38-.06.6.46.24.55.79 1.9.86 2.04.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.69-.8.87-1.08.18-.28.36-.23.6-.14.24.09 1.55.73 1.81.87.26.14.44.21.5.32.06.11.06.65-.18 1.33z" />

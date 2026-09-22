@@ -53,14 +53,6 @@ export default function ChiSiamoContatti() {
 
   return (
     <section className="border-t border-neutral-900 py-20 md:py-28 relative overflow-hidden">
-      {/* Stage light: bloom shifts to the left for this scene.
-          Radial-gradient (not filter:blur) so it costs nothing to paint. */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(38% 42% at 12% 30%, rgba(230,0,125,0.09) 0%, transparent 68%)' }}
-        aria-hidden="true"
-      />
-
       <div className="relative max-w-6xl mx-auto px-5">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
 

@@ -16,13 +16,6 @@ export default function Pacchetti() {
 
   return (
     <section className="border-t border-neutral-900 py-16 md:py-24 relative overflow-hidden">
-      {/* Stage light for this scene — radial-gradient (not filter:blur) to stay paint-cheap */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(45% 35% at 50% 12%, rgba(230,0,125,0.07) 0%, transparent 68%)' }}
-        aria-hidden="true"
-      />
-
       <div className="relative max-w-6xl mx-auto px-5 w-full">
         <div className="mb-7 flex flex-col md:flex-row md:items-end md:justify-between gap-5">
           <div>

@@ -14,17 +14,17 @@ function App() {
 
   return (
     <div className="min-h-screen text-white font-body">
-      <div className="fixed inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/hero-bg.jpg)', zIndex: 0 }} />
-      {/* Legibility gradient — rich at the edges, lets the salon breathe through the middle */}
+      {/* Sfondo: la foto reale del salone, gradata (assets-source → public/hero-bg.jpg),
+          sotto un unico velo nero uniforme. Nessuna luce colorata dipinta sopra e nessun
+          piano tonale diverso per sezione: la pagina è una sola superficie. */}
       <div
-        className="fixed inset-0"
-        style={{ zIndex: 1, background: 'linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.62) 42%, rgba(0,0,0,0.78) 78%, #000 100%)' }}
-      />
-      {/* Brand "stage light" — magenta bloom from lower-centre instead of a flat purple wash.
-          Kept permanently on so the hero photo always carries the glow. */}
-      <div
-        className="fixed inset-0"
-        style={{ zIndex: 1, background: 'radial-gradient(62% 48% at 50% 76%, rgba(230,0,125,0.28) 0%, rgba(230,0,125,0.08) 45%, transparent 72%)' }}
+        className="fixed inset-0 bg-cover"
+        style={{
+          zIndex: 0,
+          backgroundImage:
+            'linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.58) 45%, rgba(0,0,0,0.72) 75%, #000 100%), url(/hero-bg.jpg)',
+          backgroundPosition: '50% 38%',
+        }}
       />
 
       <Header />

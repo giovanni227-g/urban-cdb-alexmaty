@@ -95,14 +95,6 @@ export default function UltimiLavori() {
 
   return (
     <section className="border-t border-neutral-900 py-20 md:py-28 relative overflow-hidden">
-      {/* Stage light: bloom rises toward the top-right for this scene.
-          Radial-gradient (not filter:blur) so it costs nothing to paint. */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(40% 40% at 82% 22%, rgba(230,0,125,0.10) 0%, transparent 70%)' }}
-        aria-hidden="true"
-      />
-
       <div className="relative max-w-6xl mx-auto px-5">
         <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-5">
           <div>

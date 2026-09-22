@@ -5,11 +5,6 @@ import Reveal from './Reveal'
 export default function SocialProof() {
   return (
     <section className="border-t border-neutral-900 py-16 md:py-20 relative overflow-hidden">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(34% 34% at 78% 20%, rgba(230,0,125,0.08) 0%, transparent 70%)' }}
-        aria-hidden="true"
-      />
       <div className="max-w-6xl mx-auto px-5">
         <Reveal className="relative flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10" y={12}>
           <div>
