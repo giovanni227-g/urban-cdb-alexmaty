@@ -4,7 +4,9 @@ export default function PrivacyPolicy() {
   useEffect(() => {
     const previous = document.title
     document.title = 'Privacy Policy | Alex & Maty'
-    return () => { document.title = previous }
+    return () => {
+      document.title = previous
+    }
   }, [])
 
   return (
@@ -29,7 +31,7 @@ export default function PrivacyPolicy() {
               Titolare del trattamento
             </h2>
             <p>
-              [DA COMPILARE - ragione sociale, indirizzo P.IVA/C.F. del titolare]
+              Donnaimmagine S.r.l.s. - P.IVA 08968611213 - donnaimmagine@alice.it
               <br />
               Alex &amp; Maty - Urban CDB Salon, Via Francesco Arnaldi 108/112, 80126 Napoli
             </p>
@@ -40,14 +42,12 @@ export default function PrivacyPolicy() {
               Finalità del trattamento
             </h2>
             <p>
-              Questo sito è una landing page vetrina e non raccoglie dati tramite moduli
-              o form di contatto. I dati trattati riguardano esclusivamente:
+              Questo sito è una landing page vetrina e non raccoglie dati tramite moduli o form di
+              contatto. I dati trattati riguardano esclusivamente:
             </p>
             <ul className="list-disc list-inside mt-3 space-y-1">
               <li>il funzionamento tecnico del sito (erogazione delle pagine);</li>
-              <li>
-                statistiche di visita in forma aggregata e anonima, tramite Umami Analytics;
-              </li>
+              <li>statistiche di visita in forma aggregata e anonima, tramite Umami Analytics;</li>
               <li>
                 l&apos;eventuale contatto volontario avviato dall&apos;utente verso il salone
                 tramite WhatsApp o telefono, cliccando gli appositi link.
@@ -62,14 +62,14 @@ export default function PrivacyPolicy() {
             <ul className="list-disc list-inside space-y-1">
               <li>
                 <strong className="text-white">Umami Analytics</strong> - analisi statistica
-                cookieless, non installa cookie di profilazione e non traccia l&apos;utente
-                tra siti diversi.
+                cookieless, non installa cookie di profilazione e non traccia l&apos;utente tra siti
+                diversi.
               </li>
               <li>
-                <strong className="text-white">Google Maps</strong> - il sito include un link
-                che apre Google Maps in una scheda separata solo se l&apos;utente clicca
-                volontariamente su &ldquo;Apri in Google Maps&rdquo;; non è presente alcun
-                embed automatico della mappa che carichi dati da Google al primo accesso.
+                <strong className="text-white">Google Maps</strong> - il sito include un link che
+                apre Google Maps in una scheda separata solo se l&apos;utente clicca volontariamente
+                su &ldquo;Apri in Google Maps&rdquo;; non è presente alcun embed automatico della
+                mappa che carichi dati da Google al primo accesso.
               </li>
               <li>
                 <strong className="text-white">WhatsApp</strong> - i pulsanti &ldquo;Prenota&rdquo;
@@ -84,11 +84,11 @@ export default function PrivacyPolicy() {
               Diritti dell&apos;interessato
             </h2>
             <p>
-              In qualsiasi momento è possibile esercitare, nei confronti del titolare, i
-              diritti di cui agli artt. 15-22 del Regolamento (UE) 2016/679 (GDPR): accesso,
-              rettifica, cancellazione, limitazione del trattamento, portabilità dei dati,
-              opposizione, nonché il diritto di proporre reclamo all&apos;Autorità Garante
-              per la protezione dei dati personali.
+              In qualsiasi momento è possibile esercitare, nei confronti del titolare, i diritti di
+              cui agli artt. 15-22 del Regolamento (UE) 2016/679 (GDPR): accesso, rettifica,
+              cancellazione, limitazione del trattamento, portabilità dei dati, opposizione, nonché
+              il diritto di proporre reclamo all&apos;Autorità Garante per la protezione dei dati
+              personali.
             </p>
           </section>
 
@@ -97,9 +97,9 @@ export default function PrivacyPolicy() {
               Nessuna raccolta dati tramite form
             </h2>
             <p>
-              Il sito non contiene alcun modulo di contatto, newsletter o form di
-              registrazione: non vengono raccolti né conservati dati personali inseriti
-              dall&apos;utente su questo sito.
+              Il sito non contiene alcun modulo di contatto, newsletter o form di registrazione: non
+              vengono raccolti né conservati dati personali inseriti dall&apos;utente su questo
+              sito.
             </p>
           </section>
         </div>
