@@ -5,16 +5,9 @@ export const galleryItems = [
   {
     type: 'photo',
     src: '/gallery/work-1.jpg',
-    alt: 'Taglio e piega',
+    alt: 'Taglio scalato e piega con riflessi ramati realizzati nel salone',
     label: 'Taglio e piega',
     detail: 'Styling',
-  },
-  {
-    type: 'photo',
-    src: '/gallery/work-2.jpg',
-    alt: 'Styling',
-    label: 'Colore e forma',
-    detail: 'Look finale',
   },
   {
     type: 'video',
@@ -33,19 +26,26 @@ export const galleryItems = [
     detail: 'Movimento',
   },
   {
+    type: 'photo',
+    src: '/gallery/work-2.jpg',
+    alt: 'Capelli castani lunghi con frangia e onde morbide',
+    label: 'Colore e forma',
+    detail: 'Look finale',
+  },
+  {
     type: 'video',
     src: '/gallery/video-3.mp4',
     poster: '/gallery/video-3-poster.jpg',
     alt: 'Reel',
-    label: 'Trattamento',
-    detail: 'Cura capelli',
+    label: 'Un fiore per le clienti',
+    detail: 'Festa della donna',
   },
   {
     type: 'video',
     src: '/gallery/video-4.mp4',
     poster: '/gallery/video-4-poster.jpg',
     alt: 'Reel',
-    label: 'Finish',
+    label: 'Acconciatura',
     detail: 'Risultato',
   },
 ]

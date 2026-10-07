@@ -4,10 +4,10 @@ import { BUSINESS, WA_LINK_BARE, MAPS_URL } from '../data/business'
 import Reveal from './Reveal'
 
 const SALON_PHOTOS = [
-  { src: '/salon-1.jpg', alt: 'Urban CDB Salon — interno 1' },
-  { src: '/salon-2.jpg', alt: 'Urban CDB Salon — interno 2' },
-  { src: '/salon-3.jpg', alt: 'Urban CDB Salon — interno 3' },
-  { src: '/salon-4.jpg', alt: 'Urban CDB Salon — interno 4' },
+  { src: '/salon-1.jpg', alt: 'Postazioni del salone Alex & Maty a Napoli con specchi tondi retroilluminati' },
+  { src: '/salon-2.jpg', alt: 'Interno del salone Urban CDB Salon a Napoli' },
+  { src: '/salon-3.jpg', alt: 'Area lavaggio e postazioni del salone Urban CDB Salon' },
+  { src: '/salon-4.jpg', alt: 'Dettaglio degli ambienti del salone Alex & Maty' },
 ]
 
 const badges = ['Dal 2001', 'Parrucchiere', 'Estetica', 'Solarium']
@@ -52,13 +52,13 @@ export default function ChiSiamoContatti() {
   }, [nextPhoto])
 
   return (
-    <section className="border-t border-neutral-900 py-20 md:py-28 relative overflow-hidden">
+    <section className="py-20 md:py-28 relative overflow-hidden">
       <div className="relative max-w-6xl mx-auto px-5">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
 
-          {/* Colonna sinistra — Chi siamo + Contatti */}
+          {/* Colonna sinistra: Chi siamo + Contatti */}
           <div>
-            <p className="font-display text-brand-magenta text-xs tracking-widest uppercase mb-3">
+            <p className="font-display text-white/50 text-xs tracking-[0.2em] uppercase mb-3">
               Il salone
             </p>
             <h2
@@ -67,7 +67,7 @@ export default function ChiSiamoContatti() {
             >
               Chi siamo
             </h2>
-            <div className="w-16 h-px bg-brand-magenta mb-8" />
+            <div className="mb-8" />
 
             <p className="font-body text-neutral-300 text-base leading-relaxed mb-5">
               Alex &amp; Maty lavora a Napoli dal 2001: taglio, colore, trattamenti, estetica
@@ -79,23 +79,22 @@ export default function ChiSiamoContatti() {
               davvero tutti i giorni.
             </p>
 
-            <div className="flex flex-wrap gap-2 mb-10">
+            <div className="flex flex-wrap gap-y-3 mb-10">
               {badges.map((b, i) => (
                 <Reveal
                   key={b}
                   as="span"
                   delay={i * 90}
                   y={12}
-                  className="inline-block border border-brand-magenta/60 text-brand-magenta font-display uppercase tracking-widest text-xs px-4 py-2"
+                  className="inline-block text-white/70 font-display uppercase tracking-widest text-xs border-b border-white/25 pb-0.5 mr-4"
                 >
                   {b}
                 </Reveal>
               ))}
             </div>
 
-            <div className="relative overflow-hidden border border-white/[0.08] bg-white/[0.045] rounded p-5 mb-8">
-              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full border border-brand-magenta/25" aria-hidden="true" />
-              <p className="font-display text-white uppercase tracking-widest text-sm mb-2">
+            <div className="border-l border-white/25 pl-5 mb-8">
+                            <p className="font-display text-white uppercase tracking-widest text-sm mb-2">
                 Prenoti, arrivi, ti siedi.
               </p>
               <p className="font-body text-neutral-400 text-sm leading-relaxed">
@@ -104,7 +103,7 @@ export default function ChiSiamoContatti() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-x-6 gap-y-6 border-t border-white/[0.06] pt-8">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-6 pt-4">
               <Reveal delay={0} y={14}>
                 <p className="font-display text-white text-[10px] tracking-widest uppercase mb-2">Telefono</p>
                 <a href={`tel:${BUSINESS.phone}`} className="font-body text-neutral-300 hover:text-white text-sm transition-colors">
@@ -131,14 +130,14 @@ export default function ChiSiamoContatti() {
               <Reveal delay={240} y={14}>
                 <p className="font-display text-white text-[10px] tracking-widest uppercase mb-2">Orari</p>
                 <p className="font-body text-neutral-400 text-sm leading-relaxed">
-                  Mar–Sab&nbsp;9:00–19:00<br />
+                  Mar-Sab&nbsp;9:00-19:00<br />
                   <span className="text-neutral-600">Lun e Dom chiuso</span>
                 </p>
               </Reveal>
             </div>
           </div>
 
-          {/* Colonna destra — Gallery foto */}
+          {/* Colonna destra: Gallery foto */}
           <div className="flex flex-col gap-4">
             <div
               className="relative overflow-hidden rounded-sm aspect-video cursor-pointer group"
@@ -191,7 +190,7 @@ export default function ChiSiamoContatti() {
                   onClick={() => setPhotoIdx(i)}
                   className={`rounded-full transition-all duration-300 ${
                     i === photoIdx
-                      ? 'w-5 h-1.5 bg-brand-magenta'
+                      ? 'w-5 h-1.5 bg-white'
                       : 'w-1.5 h-1.5 bg-white/25 hover:bg-white/50'
                   }`}
                   aria-label={`Vai alla foto ${i + 1}`}
@@ -205,7 +204,7 @@ export default function ChiSiamoContatti() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 border border-white/15 text-neutral-300 hover:text-white font-body text-sm px-5 py-3 rounded transition-colors hover:bg-white/5 w-fit"
             >
-              <span className="text-brand-magenta"><MapPinIcon /></span>
+              <span className="text-white/70"><MapPinIcon /></span>
               Apri in Google Maps
             </a>
           </div>

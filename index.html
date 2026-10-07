@@ -11,18 +11,58 @@
          render-blocking stylesheet, so a preload adds little and only produces "unused preload" console noise. -->
     <link rel="preload" as="image" href="/hero-bg.jpg" fetchpriority="high" />
 
-    <title>Alex &amp; Maty · Urban CDB Salon — Parrucchiere a Napoli</title>
-    <meta name="description" content="Alex &amp; Maty — Urban CDB Salon. Parrucchiere, estetica e solarium nel cuore di Napoli dal 2001. Stile metropolitano, cura artigianale. Prenota su WhatsApp." />
-    <meta name="author" content="Alex & Maty — Urban CDB Salon" />
+    <title>Alex &amp; Maty | Parrucchiere a Napoli dal 2001</title>
+    <meta name="description" content="Alex &amp; Maty, Urban CDB Salon: parrucchiere, estetica e solarium a Napoli dal 2001. Pacchetti colore, taglio e piega con prezzi chiari. Prenota su WhatsApp." />
+    <meta name="author" content="Alex &amp; Maty, Urban CDB Salon" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="__SITE_URL__/" />
 
     <!-- Open Graph (social sharing) -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="it_IT" />
-    <meta property="og:site_name" content="Alex & Maty — Urban CDB Salon" />
-    <meta property="og:title" content="Alex &amp; Maty · Urban CDB Salon — Parrucchiere a Napoli" />
+    <meta property="og:site_name" content="Alex &amp; Maty, Urban CDB Salon" />
+    <meta property="og:title" content="Alex &amp; Maty | Parrucchiere a Napoli dal 2001" />
     <meta property="og:description" content="Parrucchiere, estetica e solarium a Napoli dal 2001. Stile metropolitano, cura artigianale." />
-    <meta property="og:image" content="/hero-bg.jpg" />
+    <meta property="og:url" content="__SITE_URL__/" />
+    <meta property="og:image" content="__SITE_URL__/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Interno del salone Alex &amp; Maty a Napoli, con gli specchi tondi retroilluminati" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Alex &amp; Maty | Parrucchiere a Napoli dal 2001" />
+    <meta name="twitter:description" content="Parrucchiere, estetica e solarium a Napoli dal 2001. Stile metropolitano, cura artigianale." />
+    <meta name="twitter:image" content="__SITE_URL__/og-image.jpg" />
+
+    <!-- Dati strutturati per la ricerca locale (solo dati reali del salone) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HairSalon",
+        "name": "Alex & Maty, Urban CDB Salon",
+        "description": "Parrucchiere, estetica e solarium a Napoli dal 2001.",
+        "url": "__SITE_URL__/",
+        "image": "__SITE_URL__/og-image.jpg",
+        "telephone": "+390815883171",
+        "foundingDate": "2001",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Via Francesco Arnaldi 108/112",
+          "addressLocality": "Napoli",
+          "postalCode": "80126",
+          "addressRegion": "NA",
+          "addressCountry": "IT"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "09:00",
+            "closes": "19:00"
+          }
+        ],
+        "sameAs": ["https://www.instagram.com/alexematy_urbancdb"]
+      }
+    </script>
 
     <script defer src="https://cloud.umami.is/script.js" data-website-id="c385cebd-1754-4be4-8fce-d4746d1685b2"></script>
   </head>

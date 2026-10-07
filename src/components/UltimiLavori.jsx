@@ -11,6 +11,13 @@ const InstagramIcon = () => (
   </svg>
 )
 
+// Ogni riga della griglia a 4 colonne: una foto (2 colonne) + due video verticali (1 colonna).
+// I video sono 1:2, quindi la cella e' alta quanto serve per mostrarli interi (niente crop sui capelli).
+const SHAPES = {
+  photo: { wrap: 'col-span-2', cell: 'aspect-[4/5] md:aspect-auto md:h-full', featured: true },
+  video: { wrap: '', cell: 'aspect-[1/2] md:aspect-auto md:h-full' },
+}
+
 const WorkLabel = ({ item, featured = false }) => (
   <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-black/82 via-black/40 to-transparent p-3 md:p-4 pointer-events-none">
     <span>
@@ -27,7 +34,7 @@ const WorkLabel = ({ item, featured = false }) => (
   </span>
 )
 
-function VideoCell({ item, featured = false }) {
+function VideoCell({ item, cell, featured = false }) {
   const videoRef = useRef(null)
 
   useEffect(() => {
@@ -49,7 +56,7 @@ function VideoCell({ item, featured = false }) {
       href={INSTAGRAM_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative overflow-hidden bg-neutral-900 block ${featured ? 'aspect-[4/5] md:aspect-auto md:h-full' : 'aspect-square'}`}
+      className={`group relative overflow-hidden bg-neutral-900 block ${cell}`}
       aria-label={`${item.label} su Instagram`}
     >
       <video
@@ -69,13 +76,13 @@ function VideoCell({ item, featured = false }) {
   )
 }
 
-function PhotoCell({ item, featured = false }) {
+function PhotoCell({ item, cell, featured = false }) {
   return (
     <a
       href={INSTAGRAM_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative overflow-hidden bg-neutral-900 block ${featured ? 'aspect-[4/5] md:aspect-auto md:h-full' : 'aspect-square'}`}
+      className={`group relative overflow-hidden bg-neutral-900 block ${cell}`}
     >
       <img
         src={item.src}
@@ -94,11 +101,11 @@ export default function UltimiLavori() {
   useFadeUp(titleRef)
 
   return (
-    <section className="border-t border-neutral-900 py-20 md:py-28 relative overflow-hidden">
+    <section className="py-20 md:py-28 relative overflow-hidden">
       <div className="relative max-w-6xl mx-auto px-5">
         <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-5">
           <div>
-            <p className="font-display text-brand-magenta text-xs tracking-widest uppercase mb-3">
+            <p className="font-display text-white/50 text-xs tracking-[0.2em] uppercase mb-3">
               Portfolio reale
             </p>
             <h2
@@ -107,28 +114,23 @@ export default function UltimiLavori() {
             >
               Ultimi lavori
             </h2>
-            <div className="w-16 h-px bg-brand-magenta" />
+            
           </div>
           <p className="font-body text-neutral-400 text-sm md:max-w-sm leading-relaxed">
             Tagli, pieghe e finish pubblicati dal salone: una selezione rapida per capire mano, gusto e risultato.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 md:auto-rows-[minmax(150px,1fr)] gap-2">
-          {galleryItems.map((item, i) => (
-            <Reveal
-              key={i}
-              delay={i * 70}
-              y={18}
-              className={i === 0 ? 'col-span-2 md:row-span-2' : ''}
-            >
-              {item.type === 'video' ? (
-                <VideoCell item={item} featured={i === 0} />
-              ) : (
-                <PhotoCell item={item} featured={i === 0} />
-              )}
-            </Reveal>
-          ))}
+        <div className="grid grid-cols-2 md:grid-cols-4 md:auto-rows-[520px] gap-2">
+          {galleryItems.map((item, i) => {
+            const shape = SHAPES[item.type]
+            const Cell = item.type === 'video' ? VideoCell : PhotoCell
+            return (
+              <Reveal key={i} delay={i * 70} y={18} className={shape.wrap}>
+                <Cell item={item} cell={shape.cell} featured={!!shape.featured} />
+              </Reveal>
+            )
+          })}
         </div>
 
         <div className="text-center mt-10">

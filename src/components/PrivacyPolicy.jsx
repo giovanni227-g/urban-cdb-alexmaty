@@ -1,4 +1,12 @@
+import { useEffect } from 'react'
+
 export default function PrivacyPolicy() {
+  useEffect(() => {
+    const previous = document.title
+    document.title = 'Privacy Policy | Alex & Maty'
+    return () => { document.title = previous }
+  }, [])
+
   return (
     // NOTA: far validare il testo da un legale prima della pubblicazione.
     <div className="min-h-screen bg-black text-white font-body px-5 py-16 md:py-24">
@@ -21,9 +29,9 @@ export default function PrivacyPolicy() {
               Titolare del trattamento
             </h2>
             <p>
-              [DA COMPILARE — ragione sociale, indirizzo P.IVA/C.F. del titolare]
+              [DA COMPILARE - ragione sociale, indirizzo P.IVA/C.F. del titolare]
               <br />
-              Alex &amp; Maty — Urban CDB Salon, Via Francesco Arnaldi 108/112, 80126 Napoli
+              Alex &amp; Maty - Urban CDB Salon, Via Francesco Arnaldi 108/112, 80126 Napoli
             </p>
           </section>
 
@@ -53,18 +61,18 @@ export default function PrivacyPolicy() {
             </h2>
             <ul className="list-disc list-inside space-y-1">
               <li>
-                <strong className="text-white">Umami Analytics</strong> — analisi statistica
+                <strong className="text-white">Umami Analytics</strong> - analisi statistica
                 cookieless, non installa cookie di profilazione e non traccia l&apos;utente
                 tra siti diversi.
               </li>
               <li>
-                <strong className="text-white">Google Maps</strong> — il sito include un link
+                <strong className="text-white">Google Maps</strong> - il sito include un link
                 che apre Google Maps in una scheda separata solo se l&apos;utente clicca
                 volontariamente su &ldquo;Apri in Google Maps&rdquo;; non è presente alcun
                 embed automatico della mappa che carichi dati da Google al primo accesso.
               </li>
               <li>
-                <strong className="text-white">WhatsApp</strong> — i pulsanti &ldquo;Prenota&rdquo;
+                <strong className="text-white">WhatsApp</strong> - i pulsanti &ldquo;Prenota&rdquo;
                 aprono una conversazione WhatsApp precompilata; il trattamento dei dati dopo
                 l&apos;apertura del link è di competenza di WhatsApp/Meta.
               </li>

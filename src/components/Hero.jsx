@@ -14,19 +14,9 @@ export default function Hero() {
   const shown = 'opacity-100 translate-y-0'
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-5 pt-20 overflow-hidden">
-      {/* Dissolvenza cinematica verso il nero */}
-      <div
-        className="absolute bottom-0 inset-x-0 h-[55vh] bg-gradient-to-b from-transparent to-black pointer-events-none"
-        style={{ zIndex: 2 }}
-      />
-
+    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center text-center px-5 pt-20 overflow-hidden">
       {/* Contenuto */}
       <div className="relative flex min-w-0 flex-col items-center w-full max-w-6xl" style={{ zIndex: 3 }}>
-        <div
-          className={`mirror-mark mb-5 md:mb-7 delay-200 ${base} ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-          aria-hidden="true"
-        />
 
         <h1 className="min-w-0 w-full max-w-[calc(100vw-2.5rem)] md:max-w-none font-display font-bold uppercase leading-[0.92] tracking-normal text-[clamp(2rem,8vw,5.8rem)] sm:text-[clamp(2.35rem,9.4vw,5.8rem)] md:text-7xl lg:text-8xl text-white">
           {/* Reveal in due tempi: la seconda riga entra un attimo dopo la prima */}
@@ -49,7 +39,7 @@ export default function Hero() {
         <p
           className={`max-w-[calc(100vw-2.5rem)] font-body text-neutral-300 text-sm sm:text-base md:text-lg leading-snug tracking-wide delay-500 ${base} ${visible ? shown : hidden}`}
         >
-          Parrucchiere &middot; Estetica &middot; Solarium — Napoli dal 2001
+          Parrucchiere &middot; Estetica &middot; Solarium, Napoli dal 2001
         </p>
 
         <div
@@ -57,7 +47,7 @@ export default function Hero() {
         >
           {TRUST_MARKERS.map((marker) => (
             <span key={marker} className="inline-flex items-center gap-2 font-display uppercase tracking-[0.13em] md:tracking-[0.18em] text-[10px]">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-magenta" />
+              <span className="h-px w-3 bg-white/40" />
               {marker}
             </span>
           ))}
@@ -74,18 +64,6 @@ export default function Hero() {
           </svg>
           Prenota su WhatsApp
         </a>
-      </div>
-
-      {/* Indicatore di scroll — invita a scendere, discreto */}
-      <div
-        className={`absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 delay-700 ${base} ${visible ? 'opacity-100' : 'opacity-0'}`}
-        style={{ zIndex: 3 }}
-        aria-hidden="true"
-      >
-        <span className="font-display uppercase tracking-[0.3em] text-[10px] text-white/50">Scopri</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 text-brand-magenta" style={{ animation: 'scrollCue 1.8s ease-in-out infinite' }}>
-          <path d="M12 5v14M5 12l7 7 7-7" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
       </div>
     </section>
   )

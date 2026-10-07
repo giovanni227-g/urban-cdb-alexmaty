@@ -13,6 +13,10 @@ export const BUSINESS = {
 export const WA_LINK =
   `https://wa.me/${BUSINESS.whatsappNumber}?text=${encodeURIComponent(BUSINESS.whatsappMessage)}`
 
+// Link WhatsApp con messaggio dedicato al pacchetto / servizio scelto
+export const waLinkFor = (text) =>
+  `https://wa.me/${BUSINESS.whatsappNumber}?text=${encodeURIComponent(text)}`
+
 export const WA_LINK_BARE = `https://wa.me/${BUSINESS.whatsappNumber}`
 
 export const MAPS_URL = `https://maps.google.com/?q=${BUSINESS.mapsQuery}`
