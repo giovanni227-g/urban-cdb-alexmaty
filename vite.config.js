@@ -1,12 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Dominio pubblico: SITE_URL (impostabile su Vercel) oppure il dominio di produzione che Vercel
-// espone a build-time. In locale resta vuoto e i tag che richiedono un URL assoluto vengono omessi.
-const SITE_URL = (
-  process.env.SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : '')
-).replace(/\/$/, '')
+// Dominio canonico e pubblico. SITE_URL consente una sovrascrittura per ambienti specifici.
+const SITE_URL = (process.env.SITE_URL || 'https://alexmaty.it').replace(/\/$/, '')
 
 // Riempie canonical / og:url / og:image / JSON-LD con l'URL assoluto e genera robots.txt + sitemap.xml.
 function seo() {
