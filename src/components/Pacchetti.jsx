@@ -51,7 +51,7 @@ export default function Pacchetti() {
               className={`font-display uppercase tracking-widest text-sm pb-3 border-b-2 -mb-px transition-colors duration-200 cursor-pointer ${
                 tab === t.id
                   ? 'text-white border-brand-magenta'
-                  : 'text-neutral-500 border-transparent hover:text-neutral-300'
+                  : 'text-neutral-400 border-transparent hover:text-neutral-200'
               }`}
             >
               {t.label}
@@ -144,7 +144,7 @@ export default function Pacchetti() {
         )}
 
         <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t border-white/[0.06] pt-6">
-          <p className="font-body text-neutral-500 text-sm">
+          <p className="font-body text-neutral-400 text-sm">
             Per confermare disponibilità e durata del servizio, il modo più rapido resta WhatsApp.
           </p>
           <a

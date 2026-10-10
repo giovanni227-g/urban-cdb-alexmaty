@@ -6,42 +6,42 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("/fonts/inter-var-latin.woff2") format("woff2");
+  src: url("./assets/fonts/inter-var-latin.woff2") format("woff2");
 }
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("/fonts/inter-var-latin.woff2") format("woff2");
+  src: url("./assets/fonts/inter-var-latin.woff2") format("woff2");
 }
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("/fonts/inter-var-latin.woff2") format("woff2");
+  src: url("./assets/fonts/inter-var-latin.woff2") format("woff2");
 }
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("/fonts/inter-var-latin.woff2") format("woff2");
+  src: url("./assets/fonts/inter-var-latin.woff2") format("woff2");
 }
 @font-face {
   font-family: "Oswald";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("/fonts/oswald-var-latin.woff2") format("woff2");
+  src: url("./assets/fonts/oswald-var-latin.woff2") format("woff2");
 }
 @font-face {
   font-family: "Oswald";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("/fonts/oswald-var-latin.woff2") format("woff2");
+  src: url("./assets/fonts/oswald-var-latin.woff2") format("woff2");
 }
 
 @theme {
@@ -134,4 +134,41 @@ html {
 }
 .ken-burns {
   animation: kenBurns 9s ease-out forwards;
+}
+
+/* --- Sfondo della pagina: la foto reale del salone sotto un unico velo nero uniforme ---
+   In CSS (non inline in App) per servire un file più leggero agli schermi stretti:
+   su mobile la foto sta sotto un velo all'86% e quella da 1600px era peso sprecato. */
+.site-backdrop {
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.80) 40%, rgba(0, 0, 0, 0.86) 100%),
+    url("./assets/img/hero-bg-mobile.jpg");
+  background-position: 50% 38%;
+  background-size: cover;
+}
+@media (min-width: 768px) {
+  .site-backdrop {
+    background-image:
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.80) 40%, rgba(0, 0, 0, 0.86) 100%),
+      url("./assets/img/hero-bg.jpg");
+  }
+}
+
+/* --- Ingresso dell'hero: in CSS e non in JS, così parte già sull'HTML pre-renderizzato
+   senza aspettare che React carichi. Stessa curva e stessi ritardi di prima. --- */
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to   { opacity: 1; transform: none; }
+}
+.hero-in {
+  animation: heroIn 0.7s ease-out backwards;
+}
+/* Le righe del titolo salgono dalla maschera (overflow-hidden) senza dissolvenza: il titolo
+   è l'elemento LCP e Chrome lo conta solo a opacità piena, quindi un fade lo ritarda di 0,7s. */
+@keyframes heroRise {
+  from { transform: translateY(0.45em); }
+  to   { transform: none; }
+}
+.hero-rise {
+  animation: heroRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }

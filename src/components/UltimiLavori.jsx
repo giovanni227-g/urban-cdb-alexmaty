@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { galleryItems, INSTAGRAM_URL } from '../data/gallery'
 import { useFadeUp } from '../hooks/useFadeUp'
 import Reveal from './Reveal'
@@ -36,6 +36,25 @@ const WorkLabel = ({ item, featured = false }) => (
 
 function VideoCell({ item, cell, featured = false }) {
   const videoRef = useRef(null)
+  // Il poster si scarica appena l'attributo esiste: lo mettiamo solo quando la cella
+  // si avvicina, così non ruba banda al titolo dell'hero durante il primo caricamento.
+  const [near, setNear] = useState(false)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    const nearIo = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setNear(true)
+          nearIo.disconnect()
+        }
+      },
+      { rootMargin: '600px 0px' }
+    )
+    nearIo.observe(video)
+    return () => nearIo.disconnect()
+  }, [])
 
   useEffect(() => {
     const video = videoRef.current
@@ -65,7 +84,7 @@ function VideoCell({ item, cell, featured = false }) {
         loop
         playsInline
         preload="none"
-        poster={item.poster}
+        poster={near ? item.poster : undefined}
         className="w-full h-full object-cover"
       >
         <source src={item.src} type="video/mp4" />
@@ -86,6 +105,8 @@ function PhotoCell({ item, cell, featured = false }) {
     >
       <img
         src={item.src}
+        srcSet={item.srcSet}
+        sizes="(min-width: 1152px) 556px, (min-width: 768px) 48vw, 92vw"
         alt={item.alt}
         loading="lazy"
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

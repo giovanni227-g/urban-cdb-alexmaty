@@ -18,7 +18,7 @@ export default function SocialProof() {
           <div className="flex items-center gap-3">
             <span className="font-display font-bold text-white text-3xl leading-none">{BUSINESS.ratingDisplay}</span>
             <span className="text-white text-sm tracking-widest">★★★★★</span>
-            <span className="font-body text-neutral-500 text-xs">· {BUSINESS.reviewsCount} recensioni Google</span>
+            <span className="font-body text-neutral-400 text-xs">· {BUSINESS.reviewsCount} recensioni Google</span>
           </div>
         </Reveal>
 
@@ -41,10 +41,10 @@ export default function SocialProof() {
         </div>
 
         <footer className="mt-12 pt-8 pb-24 md:pb-0">
-          <p className="font-body text-neutral-500 text-xs text-center">
+          <p className="font-body text-neutral-400 text-xs text-center">
             © Alex &amp; Maty, Urban CDB Salon · Via Francesco Arnaldi 108/112, 80126 Napoli
             {' · '}
-            <a href="/privacy" className="hover:text-neutral-400 transition-colors">
+            <a href="/privacy" className="inline-block py-2 underline underline-offset-2 hover:text-white transition-colors">
               Privacy Policy
             </a>
           </p>

@@ -55,11 +55,14 @@ Animazioni tutte native (nessuna libreria: no GSAP/Framer/Lenis).
 - **Vietato `backdrop-filter`** (era il liquid-glass dell'header): provato e rimosso due volte perché lagga sullo scroll di Chrome reale. L'header usa un velo a gradiente.
 - **Niente `mix-blend-mode`** su layer fissi/grandi.
 - I bagliori "luce di scena" delle sezioni sono `radial-gradient`, **non** `filter: blur()` (che è caro da rasterizzare).
-- `hero-bg.jpg` (elemento LCP) è in `<link rel="preload" fetchpriority="high">` in `index.html`. I font non sono preloadati di proposito: piccoli, same-origin e già caricati presto dal CSS render-blocking (il preload darebbe poco e genererebbe solo warning "unused preload" in console).
+- Home e privacy sono pre-renderizzate al build (`scripts/prerender.mjs`) e il CSS è inline: il titolo dell'hero (elemento LCP) compare col primo paint, senza aspettare il JS.
+- Lo sfondo ha due file (`src/assets/img/hero-bg-mobile.jpg` sotto i 768px, `hero-bg.jpg` sopra), precaricati con la media query giusta insieme al font Oswald del titolo.
+- Le righe del titolo salgono senza dissolvenza: Chrome conta l'LCP solo a opacità piena, un fade lo ritarda di 0,7s.
+- Foto e font stanno in `src/assets/` (nome con hash, cache di un anno); le foto hanno `srcset` con una variante da 700px per il mobile.
 
 ## Resilienza, sicurezza, analytics
 - `ErrorBoundary.jsx` avvolge `<App />` in `main.jsx`: se qualcosa va in errore, l'utente vede un fallback con CTA telefonica invece di una pagina bianca.
-- `vercel.json`: `outputDirectory: dist`, rewrite SPA per `/privacy`, header di sicurezza (CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy).
+- `public/_headers` (Cloudflare Pages): header di sicurezza (CSP, HSTS, X-Frame-Options, Referrer-Policy, Permissions-Policy) e regole di cache.
 - Analytics: Umami Cloud (cookieless, nessun banner necessario), script in `index.html` con ID reale già configurato.
 - `public/robots.txt` presente (minimale, nessun sitemap: dominio di produzione non ancora confermato).
 
@@ -70,7 +73,7 @@ Rimossi (2026-07-03) tutti i file "dead code" trovati nel progetto: 5 componenti
 **Bloccanti (richiedono dati/decisioni del cliente):**
 - Ragione sociale/P.IVA del titolare in `PrivacyPolicy.jsx` (placeholder `[DA COMPILARE]`)
 - Validazione del testo privacy da parte di un legale
-- Dominio definitivo + collegamento a Vercel (config già pronta in `vercel.json`)
+- ~~Dominio definitivo + hosting~~: fatto, alexmaty.it su Cloudflare Pages (dominio su Aruba)
 
 **Già fatto (aggiornamento 2026-07-04):**
 - Redesign visivo (header sfumato, reveal a cascata, Ken Burns, micro-interazioni) e fix lag Chrome

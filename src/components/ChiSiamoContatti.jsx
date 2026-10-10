@@ -2,12 +2,20 @@ import { useState, useCallback, useRef } from 'react'
 import { useFadeUp } from '../hooks/useFadeUp'
 import { BUSINESS, WA_LINK_BARE, MAPS_URL } from '../data/business'
 import Reveal from './Reveal'
+import salon1 from '../assets/img/salon-1.jpg'
+import salon1Sm from '../assets/img/salon-1-sm.jpg'
+import salon2 from '../assets/img/salon-2.jpg'
+import salon2Sm from '../assets/img/salon-2-sm.jpg'
+import salon3 from '../assets/img/salon-3.jpg'
+import salon3Sm from '../assets/img/salon-3-sm.jpg'
+import salon4 from '../assets/img/salon-4.jpg'
+import salon4Sm from '../assets/img/salon-4-sm.jpg'
 
 const SALON_PHOTOS = [
-  { src: '/salon-1.jpg', alt: 'Postazioni del salone Alex & Maty a Napoli con specchi tondi retroilluminati' },
-  { src: '/salon-2.jpg', alt: 'Interno del salone Urban CDB Salon a Napoli' },
-  { src: '/salon-3.jpg', alt: 'Area lavaggio e postazioni del salone Urban CDB Salon' },
-  { src: '/salon-4.jpg', alt: 'Dettaglio degli ambienti del salone Alex & Maty' },
+  { src: salon1, srcSet: `${salon1Sm} 700w, ${salon1} 1200w`, alt: 'Postazioni del salone Alex & Maty a Napoli con specchi tondi retroilluminati' },
+  { src: salon2, srcSet: `${salon2Sm} 700w, ${salon2} 1200w`, alt: 'Interno del salone Urban CDB Salon a Napoli' },
+  { src: salon3, srcSet: `${salon3Sm} 700w, ${salon3} 1200w`, alt: 'Area lavaggio e postazioni del salone Urban CDB Salon' },
+  { src: salon4, srcSet: `${salon4Sm} 700w, ${salon4} 1200w`, alt: 'Dettaglio degli ambienti del salone Alex & Maty' },
 ]
 
 const badges = ['Dal 2001', 'Parrucchiere', 'Estetica', 'Solarium']
@@ -131,7 +139,7 @@ export default function ChiSiamoContatti() {
                 <p className="font-display text-white text-[10px] tracking-widest uppercase mb-2">Orari</p>
                 <p className="font-body text-neutral-400 text-sm leading-relaxed">
                   Mar-Sab&nbsp;9:00-19:00<br />
-                  <span className="text-neutral-600">Lun e Dom chiuso</span>
+                  <span className="text-neutral-400">Lun e Dom chiuso</span>
                 </p>
               </Reveal>
             </div>
@@ -156,8 +164,10 @@ export default function ChiSiamoContatti() {
                 <img
                   key={photo.src}
                   src={photo.src}
+                  srcSet={photo.srcSet}
+                  sizes="(min-width: 1152px) 540px, (min-width: 768px) 46vw, 92vw"
                   alt={photo.alt}
-                  loading={i === 0 ? 'eager' : 'lazy'}
+                  loading="lazy"
                   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
                     i === photoIdx ? 'opacity-100 ken-burns' : 'opacity-0'
                   }`}
@@ -183,18 +193,23 @@ export default function ChiSiamoContatti() {
               </span>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center">
               {SALON_PHOTOS.map((_, i) => (
+                // Area di tocco 24px attorno al pallino da 6px (WCAG 2.5.8)
                 <button
                   key={i}
                   onClick={() => setPhotoIdx(i)}
-                  className={`rounded-full transition-all duration-300 ${
-                    i === photoIdx
-                      ? 'w-5 h-1.5 bg-white'
-                      : 'w-1.5 h-1.5 bg-white/25 hover:bg-white/50'
-                  }`}
+                  className="group/dot flex h-6 min-w-6 items-center justify-center"
                   aria-label={`Vai alla foto ${i + 1}`}
-                />
+                >
+                  <span
+                    className={`block rounded-full transition-all duration-300 ${
+                      i === photoIdx
+                        ? 'w-5 h-1.5 bg-white'
+                        : 'w-1.5 h-1.5 bg-white/25 group-hover/dot:bg-white/50'
+                    }`}
+                  />
+                </button>
               ))}
             </div>
 

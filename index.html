@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
 
-    <!-- Preload the hero image: it's the LCP element, fetched at high priority before it's discovered in CSS.
-         Fonts are intentionally NOT preloaded: they're small, same-origin, and already fetched early via the
-         render-blocking stylesheet, so a preload adds little and only produces "unused preload" console noise. -->
-    <link rel="preload" as="image" href="/hero-bg.jpg" fetchpriority="high" />
+    <!-- Preload della foto di sfondo (mobile/desktop) e del font Oswald del titolo, inseriti al
+         build da scripts/prerender.mjs con i nomi file con hash. -->
+    <!--hero-preload-->
 
     <title>Alex &amp; Maty | Parrucchiere a Napoli dal 2001</title>
     <meta name="description" content="Alex &amp; Maty, Urban CDB Salon: parrucchiere, estetica e solarium a Napoli dal 2001. Pacchetti colore, taglio e piega con prezzi chiari. Prenota su WhatsApp." />
