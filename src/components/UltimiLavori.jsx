@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { galleryItems, INSTAGRAM_URL } from '../data/gallery'
 import { useFadeUp } from '../hooks/useFadeUp'
+import { trackInstagramClick } from '../lib/analytics'
 import Reveal from './Reveal'
 
 const InstagramIcon = () => (
@@ -75,6 +76,7 @@ function VideoCell({ item, cell, featured = false }) {
       href={INSTAGRAM_URL}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackInstagramClick('ultimi_lavori_gallery')}
       className={`group relative overflow-hidden bg-neutral-900 block ${cell}`}
       aria-label={`${item.label} su Instagram`}
     >
@@ -101,6 +103,7 @@ function PhotoCell({ item, cell, featured = false }) {
       href={INSTAGRAM_URL}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackInstagramClick('ultimi_lavori_gallery')}
       className={`group relative overflow-hidden bg-neutral-900 block ${cell}`}
     >
       <img
@@ -159,6 +162,7 @@ export default function UltimiLavori() {
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackInstagramClick('ultimi_lavori_cta')}
             className="inline-flex items-center gap-2 border border-white/20 text-white font-body text-sm px-6 py-3 rounded hover:bg-white/5 transition-colors"
           >
             <InstagramIcon />

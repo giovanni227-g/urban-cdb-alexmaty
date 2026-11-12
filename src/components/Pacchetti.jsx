@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { packages, menuBellezza } from '../data/packages'
 import { WA_LINK, waLinkFor } from '../data/business'
 import { useFadeUp } from '../hooks/useFadeUp'
+import { trackPackageClick, trackServiceClick, trackWhatsAppClick } from '../lib/analytics'
 import Reveal from './Reveal'
 
 // Stesso gesto ovunque: tocchi la voce, si apre WhatsApp con il messaggio gia' scritto.
@@ -76,6 +77,7 @@ export default function Pacchetti() {
                   href={waLinkFor(`Ciao! Vorrei prenotare il pacchetto ${pkg.name}${pkg.note ? ` ${pkg.note}` : ''} (${pkg.bestFor}, ${pkg.price}) da Alex & Maty`)}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackPackageClick(pkg.name, pkg.note || pkg.bestFor)}
                   aria-label={`Prenota ${pkg.name} (${pkg.bestFor}, ${pkg.price}) su WhatsApp`}
                   className="group flex h-full flex-col pt-5 pb-3"
                 >
@@ -128,6 +130,7 @@ export default function Pacchetti() {
                     href={waLinkFor(`Ciao! Vorrei prenotare: ${item.name} (${item.price}) da Alex & Maty`)}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackServiceClick(item.name)}
                     aria-label={`Prenota ${item.name} su WhatsApp`}
                     className="group flex justify-between items-baseline py-3.5 transition-colors hover:text-white"
                   >
@@ -151,6 +154,7 @@ export default function Pacchetti() {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick('prezzi_cta')}
             className="inline-flex w-fit items-center justify-center bg-white text-black hover:bg-brand-magenta hover:text-white font-body font-semibold text-sm px-5 py-3 rounded transition-colors"
           >
             Chiedi disponibilità

@@ -1,4 +1,5 @@
 import { TRUST_MARKERS, WA_LINK } from '../data/business'
+import { trackWhatsAppClick } from '../lib/analytics'
 
 export default function Hero() {
   // Ingresso in CSS (.hero-in): parte sull'HTML pre-renderizzato, senza aspettare React
@@ -48,6 +49,7 @@ export default function Hero() {
           href={WA_LINK}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsAppClick('hero')}
           className={`mt-8 inline-flex items-center gap-2.5 bg-brand-magenta hover:bg-brand-magenta-dark text-white font-semibold font-body px-8 py-3.5 rounded shadow-lg shadow-black/40 hover:-translate-y-0.5 transition-all duration-300 [animation-delay:700ms] ${base}`}
         >
           <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5" aria-hidden="true">

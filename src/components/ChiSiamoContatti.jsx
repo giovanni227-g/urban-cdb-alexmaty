@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef } from 'react'
 import { useFadeUp } from '../hooks/useFadeUp'
 import { BUSINESS, WA_LINK_BARE, MAPS_URL } from '../data/business'
+import { trackWhatsAppClick } from '../lib/analytics'
 import Reveal from './Reveal'
 import salon1 from '../assets/img/salon-1.jpg'
 import salon1Sm from '../assets/img/salon-1-sm.jpg'
@@ -124,6 +125,7 @@ export default function ChiSiamoContatti() {
                   href={WA_LINK_BARE}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick('contatti')}
                   className="font-body text-neutral-300 hover:text-white text-sm transition-colors"
                 >
                   338 287 3428

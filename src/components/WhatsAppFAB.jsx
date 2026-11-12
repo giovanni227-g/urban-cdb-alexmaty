@@ -1,4 +1,5 @@
 import { WA_LINK } from '../data/business'
+import { trackWhatsAppClick } from '../lib/analytics'
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7" aria-hidden="true">
@@ -12,6 +13,7 @@ export default function WhatsAppFAB() {
       href={WA_LINK}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackWhatsAppClick('floating_button')}
       aria-label="Prenota su WhatsApp"
       className="fixed bottom-20 right-5 md:bottom-8 md:right-8 z-[60] flex items-center justify-center w-14 h-14 rounded-full shadow-xl shadow-black/50 transition-transform duration-200 hover:scale-110 active:scale-95"
       style={{ backgroundColor: '#25D366' }}

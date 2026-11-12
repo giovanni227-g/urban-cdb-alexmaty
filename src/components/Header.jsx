@@ -1,4 +1,5 @@
 import { WA_LINK } from '../data/business'
+import { trackWhatsAppClick } from '../lib/analytics'
 
 export default function Header() {
   return (
@@ -21,6 +22,7 @@ export default function Header() {
           href={WA_LINK}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsAppClick('header')}
           className="font-body text-sm font-semibold text-white bg-brand-magenta hover:bg-brand-magenta-dark transition-colors px-4 py-2 rounded"
         >
           Prenota
